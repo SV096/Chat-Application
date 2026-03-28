@@ -172,6 +172,7 @@ const MyChats = ({ fetchAgain }) => {
                     </Text>
                   )}
                 </Box>
+              </Box>
             ))}
           </Stack>
         ) : (
