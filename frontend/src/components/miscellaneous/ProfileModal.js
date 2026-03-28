@@ -146,8 +146,14 @@ const ProfileModal = ({ user, children }) => {
         config
       );
 
-      setUser(data);
-      StorageUtil.setJSON("userInfo", data);
+      // Ensure token is preserved in the response
+      const updatedUser = {
+        ...data,
+        token: currentUser.token,
+      };
+
+      setUser(updatedUser);
+      StorageUtil.setJSON("userInfo", updatedUser);
       toast({
         title: "Profile Picture Updated!",
         status: "success",

@@ -113,7 +113,14 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     throw new Error("User not found");
   }
 
-  res.json(user);
+  res.json({
+    _id: user._id,
+    name: user.name,
+    email: user.email,
+    isAdmin: user.isAdmin,
+    pic: user.pic,
+    token: generateToken(user._id),
+  });
 });
 
 module.exports = { allUsers, registerUser, authUser, updateUserProfile };
