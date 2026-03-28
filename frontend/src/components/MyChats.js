@@ -52,7 +52,10 @@ const MyChats = ({ fetchAgain }) => {
       fetchChats();
     }
     // eslint-disable-next-line
-  }, [fetchAgain, userBox
+  }, [fetchAgain, user]);
+
+  return (
+    <Box
       d={{ base: selectedChat ? "none" : "flex", md: "flex" }}
       flexDir="column"
       alignItems="center"
