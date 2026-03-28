@@ -141,7 +141,7 @@ const ProfileModal = ({ user, children }) => {
       };
 
       const { data } = await axios.put(
-        `/api/user/${currentUser._id}`,
+        `${process.env.REACT_APP_API_URL}/user/${currentUser._id}`,
         { pic },
         config
       );

@@ -11,8 +11,6 @@ import { ChatState } from "../Context/ChatProvider";
 import StorageUtil from "../utils/storageUtil";
 
 const MyChats = ({ fetchAgain }) => {
-  const [loggedUser, setLoggedUser] = useState();
-
   const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
 
   const toast = useToast();
@@ -21,6 +19,9 @@ const MyChats = ({ fetchAgain }) => {
     try {
       // Use either context user or localStorage user
       const userInfo = user || loggedUser || StorageUtil.getJSON("userInfo");
+      
+      user from ChatState context
+      const userInfo = user || StorageUtil.getJSON("userInfo");
       
       if (!userInfo || !userInfo.token) {
         console.error("No user or token found");
@@ -33,7 +34,7 @@ const MyChats = ({ fetchAgain }) => {
         },
       };
 
-      const { data } = await axios.get("/api/chat", config);
+      const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/chat`, config);
       setChats(data);
     } catch (error) {
       console.error("Fetch chats error:", error);
@@ -49,19 +50,12 @@ const MyChats = ({ fetchAgain }) => {
   };
 
   useEffect(() => {
-    // Set logged user from localStorage
-    const userInfo = StorageUtil.getJSON("userInfo");
-    setLoggedUser(userInfo);
-    
-    // Fetch chats if user exists in context or localStorage
-    if (user || userInfo) {
+    // Fetch chats if user exists in context
+    if (user) {
       fetchChats();
     }
     // eslint-disable-next-line
-  }, [fetchAgain]);
-
-  return (
-    <Box
+  }, [fetchAgain, userBox
       d={{ base: selectedChat ? "none" : "flex", md: "flex" }}
       flexDir="column"
       alignItems="center"
@@ -146,13 +140,12 @@ const MyChats = ({ fetchAgain }) => {
                   src={
                     !chat.isGroupChat
                       ? getSenderFull(loggedUser, chat.users)?.pic || ""
-                      : chat.groupImage || ""
+                      : chat.groupuser, chat.users)
+                      : chat.chatName
                   }
-                  flexShrink={0}
-                  boxShadow="0 2px 8px rgba(0, 0, 0, 0.15)"
-                />
-                <Box flex="1" minW="0">
-                  <Text 
+                  src={
+                    !chat.isGroupChat
+                      ? getSenderFull(u             <Text 
                     fontWeight="700" 
                     fontSize="15px"
                     fontFamily="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
