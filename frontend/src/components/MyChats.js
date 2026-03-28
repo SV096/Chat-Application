@@ -140,19 +140,17 @@ const MyChats = ({ fetchAgain }) => {
                   src={
                     !chat.isGroupChat
                       ? getSenderFull(loggedUser, chat.users)?.pic || ""
-                      : chat.groupuser, chat.users)
-                      : chat.chatName
+                      : chat.groupImage || ""
                   }
-                  src={
-                    !chat.isGroupChat
-                      ? getSenderFull(u             <Text 
-                    fontWeight="700" 
-                    fontSize="15px"
-                    fontFamily="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
-                    letterSpacing="0.4px"
-                    color={selectedChat === chat ? "white" : "#1a202c"}
-                    mb={1}
-                  >
+                />
+                <Text
+                  fontWeight="700"
+                  fontSize="15px"
+                  fontFamily="'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+                  letterSpacing="0.4px"
+                  color={selectedChat === chat ? "white" : "#1a202c"}
+                  mb={1}
+                >
                     {!chat.isGroupChat
                       ? getSender(loggedUser, chat.users)
                       : chat.chatName}
