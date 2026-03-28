@@ -18,7 +18,7 @@ const MyChats = ({ fetchAgain }) => {
   const fetchChats = async () => {
     try {
       // Use either context user or localStorage user
-      const userInfo = user || loggedUser || StorageUtil.getJSON("userInfo");
+      const userInfo = user || StorageUtil.getJSON("userInfo");
 
       if (!userInfo || !userInfo.token) {
         console.error("No user or token found");
@@ -134,12 +134,12 @@ const MyChats = ({ fetchAgain }) => {
                   cursor="pointer"
                   name={
                     !chat.isGroupChat
-                      ? getSender(loggedUser, chat.users)
+                      ? getSender(user, chat.users)
                       : chat.chatName
                   }
                   src={
                     !chat.isGroupChat
-                      ? getSenderFull(loggedUser, chat.users)?.pic || ""
+                      ? getSenderFull(user, chat.users)?.pic || ""
                       : chat.groupImage || ""
                   }
                 />
@@ -153,7 +153,7 @@ const MyChats = ({ fetchAgain }) => {
                     mb={1}
                   >
                     {!chat.isGroupChat
-                      ? getSender(loggedUser, chat.users)
+                      ? getSender(user, chat.users)
                       : chat.chatName}
                   </Text>
                   {chat.latestMessage && (
