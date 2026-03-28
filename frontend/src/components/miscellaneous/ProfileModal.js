@@ -13,7 +13,6 @@ import {
   Text,
   Image,
   Input,
-  Spinner,
   useToast,
 } from "@chakra-ui/react";
 import { useState } from "react";
