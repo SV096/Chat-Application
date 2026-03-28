@@ -19,10 +19,7 @@ const MyChats = ({ fetchAgain }) => {
     try {
       // Use either context user or localStorage user
       const userInfo = user || loggedUser || StorageUtil.getJSON("userInfo");
-      
-      user from ChatState context
-      const userInfo = user || StorageUtil.getJSON("userInfo");
-      
+
       if (!userInfo || !userInfo.token) {
         console.error("No user or token found");
         return;
